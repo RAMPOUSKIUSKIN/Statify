@@ -145,11 +145,26 @@ export const LocationContainer = styled.div`
     width: 50%;
   }
 `
-
-export const TestContainer = styled.div`
+export const RowContainer = styled.div`
   display: flex;
+  flex-direction: row;
+  gap: 12px;
   width: 100%;
-  min-height: 250px;
+
+  @media (max-width: 810px) {
+    flex-direction: column;
+  }
+`;
+
+interface TestContainerProps {
+  $ratio?: number;
+}
+
+export const TestContainer = styled.div<TestContainerProps>`
+  flex: ${({ $ratio }) => $ratio ?? 1};
+  min-width: 0;
+  min-height: 200px;
+  display: flex;
 
   > span {
     flex: 1;
@@ -158,14 +173,14 @@ export const TestContainer = styled.div`
     background-color: var(--background);
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     padding: 12px 16px;
     border-radius: 8px;
     border: 1px solid var(--darkGray);
 
     > h5 {
       margin: 0;
-      text-align: center; 
+      text-align: center;
     }
   }
 `;

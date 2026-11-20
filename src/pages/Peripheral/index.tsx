@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect, type RefObject } from 'react';
 import InfoCard from "../../components/InfoCard";
 import TitleBar from "../../components/TitleBar";
-import { TestContainer } from "./styles";
-import { FaRegKeyboard, FaMouse } from "react-icons/fa";
+import { RowContainer, TestContainer } from "./styles";
+import { FaKeyboard, FaMouse} from "react-icons/fa";
+import { BiSolidJoystick } from "react-icons/bi";
 
 
 import { PageContainer } from "./styles";
@@ -54,12 +55,13 @@ function useKeyCapture(
 export function Peripheral() {
 	const buttonRef = useRef<HTMLButtonElement>(null);
 	const { buttonText, isListening, startListening } = useKeyCapture('Testar Teclado', buttonRef);
+	const [isSplit, setIsSplit] = useState(false);
 
 	return (
 		<PageContainer>
 			<TitleBar diagnosis={100} subtitle="DISPOSITIVOS CONECTADOS" title="Informações do Periféricos"/>
 				<div className="infoCardContainer">
-					<InfoCard Icon={FaRegKeyboard} title="Teste de Teclado">
+					<InfoCard Icon={FaKeyboard} title="Teste de Teclado">
 						<TestContainer>
 							<span>
 								<div className="TestContainer">
@@ -78,13 +80,54 @@ export function Peripheral() {
 					<InfoCard Icon={FaMouse} title="Teste de Mouse">
 						<TestContainer>
 							<span>
-								<h5>Testar Teclado</h5>
+								<button
+								type="button"
+								className='TestButton'
+								>
+								</button>
 							</span>	
 						</TestContainer>
 					</InfoCard>
 				</div>
+				<div className="infoCardContainer">
+					<InfoCard Icon={BiSolidJoystick} title="Teste de Controle">
+						<TestContainer>
+							<span>
+								<button
+								type="button"
+								className='TestButton'
+								>
+									Testar Controle
+								</button>
+							</span>	
+						</TestContainer>
+					</InfoCard>
+					<InfoCard Icon={FaMouse} title="Teste de Mouse">
+						<RowContainer>
+							<TestContainer $ratio={3}>
+								<span>
+									{!isSplit ? (
+										<button type="button"
+										className='TestButton'
+										onClick={() => setIsSplit(true)}>
+											Iniciar Teste
+										</button>
+									) : (
+										<h5>Bloco Maior (3)</h5>
+									)}
+								</span>
+							</TestContainer>
+
+							{isSplit && (
+							<TestContainer $ratio={1}>
+								<span>
+									<h5>Bloco Menor (1)</h5>
+								</span>
+							</TestContainer>
+							)}
+						</RowContainer>
+					</InfoCard>
+				</div>
 		</PageContainer>
-		
-		
 	)
 }
