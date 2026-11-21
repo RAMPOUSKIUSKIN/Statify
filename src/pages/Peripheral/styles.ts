@@ -36,7 +36,7 @@ export const PageContainer = styled.div`
   width: 100%;
   min-width: 0;
   min-height: 100%;
-  background-color: var(--background, #020617);
+  background-color: rgb(11, 15, 27);
   color: #ffffff;
   font-size: 90px;
   font-weight: 900;
@@ -145,38 +145,55 @@ export const LocationContainer = styled.div`
     width: 50%;
   }
 `
-export const RowContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  width: 100%;
+interface SplitContainerProps {
+  $direction?: "row" | "column";
+}
 
-  @media (max-width: 810px) {
-    flex-direction: column;
-  }
-`;
-
-interface TestContainerProps {
+interface SplitBoxProps {
   $ratio?: number;
 }
 
-export const TestContainer = styled.div<TestContainerProps>`
-  flex: ${({ $ratio }) => $ratio ?? 1};
+interface SplitContainerProps {
+  $direction?: "row" | "column";
+}
+
+interface SplitBoxProps {
+  $ratio?: number;
+}
+
+export const SplitContainer = styled.div<SplitContainerProps>`
+  display: flex;
+  flex-direction: ${({ $direction }) => $direction ?? "row"};
+  gap: 12px;
+  width: 100%;
   min-width: 0;
-  min-height: 200px;
+  min-height: 300px;
+
+  ${({ $direction }) =>
+    $direction === "column" &&
+    `
+    height: 300px;
+  `}
+`;
+
+export const TestContainer = styled.div<SplitBoxProps>`
+  flex: ${({ $ratio }) => $ratio ?? 1} 1 0%;
+  min-width: 0;
+  min-height: 0;
   display: flex;
 
   > span {
     flex: 1;
     width: 100%;
-    min-height: 100%;
-    background-color: var(--background);
+    height: 100%;
+    min-height: 0;
+    background-color: rgb(11, 15, 27);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 12px 16px;
     border-radius: 8px;
-    border: 1px solid var(--darkGray);
+    border: 1px solid var(--darkGray, #334155);
 
     > h5 {
       margin: 0;
