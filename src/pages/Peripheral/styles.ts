@@ -167,12 +167,12 @@ export const SplitContainer = styled.div<SplitContainerProps>`
   gap: 12px;
   width: 100%;
   min-width: 0;
-  min-height: 300px;
+  min-height: 275px;
 
   ${({ $direction }) =>
     $direction === "column" &&
     `
-    height: 300px;
+    height: 275px;
   `}
 `;
 

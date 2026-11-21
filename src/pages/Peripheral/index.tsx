@@ -48,7 +48,7 @@ function useKeyCapture(
 	return { buttonText, isListening, startListening };
 }
 
-// para o mouse
+// pro mouse
 function useMouseTracker() {
 	const [leftClicks, setLeftClicks] = useState(0);
 	const [rightClicks, setRightClicks] = useState(0);
@@ -96,7 +96,7 @@ function useMouseTracker() {
 	};
 }
 
-// para o microfone
+// pro mic/cam
 function useMicVisualizer(stream: MediaStream | null, canvasRef: RefObject<HTMLCanvasElement | null>) {
 	useEffect(() => {
 		if (!stream || !canvasRef.current) return;
@@ -280,7 +280,7 @@ export function Peripheral() {
 			<div className="infoCardContainer">
 				<InfoCard Icon={FaKeyboard} title="Teste de Teclado">
 					<TestContainer>
-						<span style={{ minHeight: "300px" }}>
+						<span style={{ minHeight: "275px" }}>
 							<div className="TestContainer">
 								<button
 									ref={buttonRef}
@@ -356,7 +356,7 @@ export function Peripheral() {
 			<div className="infoCardContainer">
 				<InfoCard Icon={BiSolidJoystick} title="Teste de Controle">
 					<TestContainer>
-						<span style={{ minHeight: "300px" }}>
+						<span style={{ minHeight: "275px" }}>
 							<button
 								type="button"
 								className="TestButton"
