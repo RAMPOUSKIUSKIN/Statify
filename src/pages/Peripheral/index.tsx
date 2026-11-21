@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useCallback, type RefObject } from 'react'
 import InfoCard from "../../components/InfoCard";
 import TitleBar from "../../components/TitleBar";
 import { PageContainer, SplitContainer, TestContainer } from "./styles";
-import { FaKeyboard, FaMouse } from "react-icons/fa";
+import { FaKeyboard, FaMouse, FaCamera } from "react-icons/fa";
 import { BiSolidJoystick } from "react-icons/bi";
 
 // pro teste de teclado, salvar a tecla, travar a tela e etc
@@ -375,7 +375,7 @@ export function Peripheral() {
 					</TestContainer>
 				</InfoCard>
 
-				<InfoCard Icon={FaMouse} title="Teste de mic">
+				<InfoCard Icon={FaCamera} title="Câmera e microfone">
 					<SplitContainer $direction="row" ref={micTestRef}>
 						{!isSplit2 ? (
 							<TestContainer>
@@ -385,7 +385,7 @@ export function Peripheral() {
 										className="TestButton"
 										onClick={startMediaTest}
 									>
-										Iniciar Teste
+										Permissão para Teste
 									</button>
 								</span>
 							</TestContainer>
